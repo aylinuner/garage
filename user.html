@@ -22,7 +22,7 @@
             <div id="login" class="tab-content-box">
                 <div class="card p-4 shadow">
                     <h3>Giriş</h3>
-                    <form>
+                    <form id="login_form">
                         <div class="mb-3">
                             <label for="email_login" class="form-label">E posta</label>
                             <input type="email" class="form-control" id="email_login">
@@ -32,8 +32,8 @@
                             <input type="password" class="form-control" id="password_login">
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="checkbox">
-                            <label class="form-check-label" for="checkbox">Beni hatırla</label>
+                            <input type="checkbox" class="form-check-input" id="register_checkbox">
+                            <label class="form-check-label" for="register_checkbox">Beni hatırla</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Gönder</button>
                     </form>
@@ -43,7 +43,7 @@
             <div id="register" class="tab-content-box d-none">
                 <div class="card p-4 shadow">
                     <h3>Kayıt Ol</h3>
-                    <form id="form">
+                    <form id="register_form">
                         <div class="mb-3">
                             <label for="name" class="form-label">Ad</label>
                             <input type="text" class="form-control" id="name">
@@ -69,8 +69,8 @@
                             <input type="password" class="form-control" id="repassword">
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="checkbox">
-                            <label class="form-check-label" for="checkbox">Beni hatırla</label>
+                            <input type="checkbox" class="form-check-input" id="login_checkbox">
+                            <label class="form-check-label" for="login_checkbox">Beni hatırla</label>
                         </div>
                         <button type="submit" id="submit_btn" class="btn btn-primary">Gönder</button>
                     </form>
