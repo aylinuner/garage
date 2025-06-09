@@ -1,38 +1,63 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('form');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        console.log(email.value, password.value);
-        const userEmail=email.value
-        const userPassword=password.value
+const tabButtons = document.querySelectorAll('#tab-buttons button');
+const tabContents = document.querySelectorAll('.tab-content-box');
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const form = document.getElementById('form');
+//     const email = document.getElementById('email');
+//     const password = document.getElementById('password');
+
+//     form.addEventListener('submit', (e) => {
+//         e.preventDefault();
+//         console.log(email.value, password.value);
+//         const userEmail=email.value
+//         const userPassword=password.value
 
 
 
         
 
-    // Mevcut kullanıcıları al
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    // Kullanıcı daha önce kayıt olmuş mu kontrol et
-    const existingUser = users.find(user => user.email === userEmail);
+//     // Mevcut kullanıcıları al
+//     const users = JSON.parse(localStorage.getItem('users')) || [];
+//     // Kullanıcı daha önce kayıt olmuş mu kontrol et
+//     const existingUser = users.find(user => user.email === userEmail);
 
-    if (existingUser) {
-        // Giriş işlemi
-        if (existingUser.password === userPassword) {
-            alert('Giriş başarılı!');
-            window.location.href = 'anasayfa.html'; // yönlendirme
-        } else {
-            alert('Şifre yanlış!');
-        }
-    } else {
-        // Yeni kullanıcı kaydet
-        users.push({ email: userEmail, password: userPassword });
-        localStorage.setItem('users', JSON.stringify(users));
-        alert('Kayıt başarılı, şimdi giriş yapabilirsiniz.');
-    }
+//     if (existingUser) {
+//         // Giriş işlemi
+//         if (existingUser.password === userPassword) {
+//             alert('Giriş başarılı!');
+//             window.location.href = 'anasayfa.html'; // yönlendirme
+//         } else {
+//             alert('Şifre yanlış!');
+//         }
+//     } else {
+//         // Yeni kullanıcı kaydet
+//         users.push({ email: userEmail, password: userPassword });
+//         localStorage.setItem('users', JSON.stringify(users));
+//         alert('Kayıt başarılı, şimdi giriş yapabilirsiniz.');
+//     }
 
-    // form.reset(); // istersen inputları sıfırlar
-});
+//     // form.reset(); // istersen inputları sıfırlar
+// });
+// });
+
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+
+        // Aktif tab içeriğini göster, diğerlerini gizle
+        tabContents.forEach(content => {
+            if (content.id === targetId) {
+                content.classList.remove('d-none');
+            } else {
+                content.classList.add('d-none');
+            }
+        });
+
+        // Aktif butonu belirle
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    });
 });

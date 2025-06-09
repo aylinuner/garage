@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS -->
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css" />
 
 
@@ -12,27 +11,78 @@
 </head>
 
 <body>
-    <form id="form">
-        <div class="mb-3">
-            <label for="email" class="form-label">E posta</label>
-            <input type="email" class="form-control" id="email">
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Şifre</label>
-            <input type="password" class="form-control" id="password">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox">
-            <label class="form-check-label" for="checkbox">Check me out</label>
-        </div>
-        <button type="submit" id="submit_btn" class="btn btn-primary">Gönder</button>
-    </form>
-    <!-- JS -->
-    <!-- Bootstrap JS -->
-    <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
-    <!-- Senin JS -->
-    <script src="user.js"></script>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="nav nav-pills mb-3 justify-content-center" id="tab-buttons">
+                <nav class="nav nav-pills nav-fill w-100">
+                <button class="tablinks nav-link active" data-target="login">Giriş</button>
+                <button class="tablinks nav-link" data-target="register">Kayıt Ol</button>
+            </nav>
+            </div>
+            <div id="login" class="tab-content-box">
+                <div class="card p-4 shadow">
+                    <h3>Giriş</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="email_login" class="form-label">E posta</label>
+                            <input type="email" class="form-control" id="email_login">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password_login" class="form-label">Şifre</label>
+                            <input type="password" class="form-control" id="password_login">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox">
+                            <label class="form-check-label" for="checkbox">Beni hatırla</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+            </div>
 
+            <div id="register" class="tab-content-box d-none">
+                <div class="card p-4 shadow">
+                    <h3>Kayıt Ol</h3>
+                    <form id="form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Ad</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="surname" class="form-label">Soyad</label>
+                            <input type="text" class="form-control" id="surname">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email_register" class="form-label">E posta</label>
+                            <input type="email" class="form-control" id="email_register">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="email_again" class="form-label">E posta tekrar</label>
+                            <input type="email" class="form-control" id="email_again">
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="password_register" class="form-label">Şifre</label>
+                            <input type="password" class="form-control" id="password_register">
+                        </div>
+                        <div class="mb-3">
+                            <label for="repassword" class="form-label">Şifre tekrar</label>
+                            <input type="password" class="form-control" id="repassword">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox">
+                            <label class="form-check-label" for="checkbox">Beni hatırla</label>
+                        </div>
+                        <button type="submit" id="submit_btn" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <script src="user.js"></script> 
 </body>
 
 </html>
