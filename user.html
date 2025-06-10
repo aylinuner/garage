@@ -11,13 +11,39 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex flex-row gap-3 mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="car.html">Araçlar</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"  href="driver.html">Sürücüler</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link"  href="customer.html">Müşteriler</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="col-12 col-md-6 col-lg-4">
             <div class="nav nav-pills mb-3 justify-content-center" id="tab-buttons">
                 <nav class="nav nav-pills nav-fill w-100">
-                <button class="tablinks nav-link active" data-target="login">Giriş</button>
-                <button class="tablinks nav-link" data-target="register">Kayıt Ol</button>
-            </nav>
+                    <button class="tablinks nav-link active" data-target="login">Giriş</button>
+                    <button class="tablinks nav-link" data-target="register">Kayıt Ol</button>
+                </nav>
             </div>
             <div id="login" class="tab-content-box">
                 <div class="card p-4 shadow">
@@ -56,10 +82,6 @@
                             <label for="email_register" class="form-label">E posta</label>
                             <input type="email" class="form-control" id="email_register">
                         </div>
-                        <!-- <div class="mb-3">
-                            <label for="email_again" class="form-label">E posta tekrar</label>
-                            <input type="email" class="form-control" id="email_again">
-                        </div> -->
                         <div class="mb-3">
                             <label for="password_register" class="form-label">Şifre</label>
                             <input type="password" class="form-control" id="password_register">
@@ -78,11 +100,12 @@
             </div>
         </div>
     </div>
-    
+
+    </div>
 
     <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
 
-    <script src="user.js"></script> 
+    <script src="user.js"></script>
 </body>
 
 </html>
