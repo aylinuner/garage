@@ -50,27 +50,34 @@ document.addEventListener('DOMContentLoaded', () => {
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault()
 
-        const name = document.getElementById('name').value.trim
-        const surname = document.getElementById('surname').value.trim
-        const email = document.getElementById('email_register').value.trim
-        const password = document.getElementById('password_register').value
-        const repassword = document.getElementById('repassword').value
+
+        const user={
+            name: registerForm.name.value.trim(),
+            surname: registerForm.surname.value.trim(),
+            email: registerForm.email_register.value.trim(),
+            password: registerForm.password_register.value,
+            repassword: registerForm.repassword.value
+        };
+        // const surname = document.getElementById('surname').value.trim
+        // const email = document.getElementById('email_register').value.trim
+        // const password = document.getElementById('password_register').value
+        // const repassword = document.getElementById('repassword').value
 
 
         const users = JSON.parse(localStorage.getItem('users')) || [];
         const alreadyExists = users.some(user => user.email === email)
 
-        if (!name || !surname || !email || !password || !repassword) {
-            alert("Tüm alanlar zorunlu!!!")
-            return;
+        // if (!name || !surname || !email || !password || !repassword) {
+        //     alert("Tüm alanlar zorunlu!!!")
+        //     return;
 
-        } 
-        if(password !== repassword) {
+        // }
+        if (password !== repassword) {
             alert('Şifreler eşleşmiyor')
             return;
 
         }
-         if (alreadyExists) {
+        if (alreadyExists) {
             alert('Bu e-posta zaten kayıtlı')
             return;
         }
@@ -78,10 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
         users.push({ name, surname, email, password });
         localStorage.setItem('users', JSON.stringify(users));
         alert('Kayıt başarılı, giriş yapabilirsiniz!')
-    
+
 
     })
 })
 
-
-
+const grg_ls = {
+    db: {
+        
+        user: [],
+        driver: [],
+        vehicle: []
+    },
+    user: {}
+}
+localStorage.setItem('ls', JSON.stringify(ls))
