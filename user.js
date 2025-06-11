@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     getLsData()
     document.getElementById('register_form').addEventListener('submit', (e) => {
         e.preventDefault()
+        if(!isValidEmail()){
+            return;
+        }
         register()
 
     });
@@ -35,8 +38,8 @@ function getLsData() {
             user: {}
         };
         localStorage.setItem('grg_ls', JSON.stringify(grg_ls))
-    }else{
-        grg_ls=JSON.parse(localStorage.getItem('grg_ls'))
+    } else {
+        grg_ls = JSON.parse(localStorage.getItem('grg_ls'))
     }
 }
 function showActiveTabContent(button) {
@@ -58,7 +61,7 @@ function register() {
         surname: document.getElementById('surname').value.trim(),
         email: document.getElementById('email_register').value.trim(),
         password: document.getElementById('password_register').value,
-        repassword: document.getElementById('repassword_register').value
+        repassword: document.getElementById('repassword').value
     };
     if (!registerData.name || !registerData.surname || !registerData.email || !registerData.password || !registerData.repassword) {
         alert('Tüm alanlar zorunlu!');
@@ -81,7 +84,7 @@ function register() {
     }
 
     const newUser = {
-        id: generateId(array),
+        id: generateId(users),
         name: registerData.name,
         surname: registerData.surname,
         email: registerData.email,
@@ -91,9 +94,22 @@ function register() {
     users.push(newUser);
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
     alert('Kayıt başarılı, giriş yapabilirsiniz!');
+    window.location.href="user.html"
+    return;
 }
-function generateId(array) {
-    return array.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
+
+function isValidEmail() {
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!pattern.test(email)) {
+        alert("Lütfen geçerli bir e-posta adresi girin.");
+        return false;
+    }
+    return true;
+}
+
+function generateId(users) {
+    return users.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
 }
 
 // loginForm?.addEventListener('submit', (e) => {
