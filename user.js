@@ -7,7 +7,7 @@ const tabContents = document.querySelectorAll('.tab-content-box');
 
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-        button()
+        showActiveTabContent(button)
     });
 });
 
@@ -39,7 +39,7 @@ function getLsData() {
         grg_ls=JSON.parse(localStorage.getItem('grg_ls'))
     }
 }
-function button() {
+function showActiveTabContent(button) {
     const targetId = button.getAttribute('data-target');
 
     activeTab = targetId;
