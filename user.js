@@ -1,5 +1,13 @@
 let activeTab = "login";
 let grg_ls = {};
+let grg_ls_default = {
+    db: {
+        user: [],
+        driver: [],
+        vehicle: []
+    },
+    signed_user: {}
+};
 
 //Event Handlers
 const tabButtons = document.querySelectorAll('#tab-buttons button');
@@ -10,7 +18,6 @@ tabButtons.forEach(button => {
         showActiveTabContent(button)
     });
 });
-
 document.addEventListener('DOMContentLoaded', () => {
     getLsData()
     document.getElementById('register_form').addEventListener('submit', (e) => {
@@ -23,20 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
         login()
     })
 });
-
 //Functions
 function getLsData() {
 
     if (!localStorage.getItem('grg_ls')) {
-        grg_ls = {
-            db: {
-                user: [],
-                driver: [],
-                vehicle: []
-            },
-            user: {}
-        };
-        localStorage.setItem('grg_ls', JSON.stringify(grg_ls))
+        grg_ls = grg_ls_default;
+            localStorage.setItem('grg_ls', JSON.stringify(grg_ls))
     } else {
         grg_ls = JSON.parse(localStorage.getItem('grg_ls'))
     }
@@ -64,8 +63,8 @@ function register() {
     };
 
     const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
-    const users = grg_ls.db.user;
-    const alreadyExists = users.some(user => user.email === registerData.email)
+    const users = grg_ls.signed_user;
+    const alreadyExists = users.some(signed_user => signed_user.email === registerData.email)
     if (!registerData.name || !registerData.surname || !registerData.email || !registerData.password || !registerData.repassword) {
         alert('Tüm alanlar zorunlu!');
         return;
@@ -108,16 +107,21 @@ function login() {
         password: document.getElementById('password_login').value
     };
     const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
-    const users = grg_ls.db.user;
-    const matchedUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
+    const users = grg_ls.signed_user;
+    const matchedUser = users.find(signed_user => signed_user.email === loginData.email && signed_user.password === loginData.password);
 
     if (!loginData.email || !loginData.password) {
         alert('Tüm alanlar zorunlu!!!')
         return;
     }
     if (matchedUser) {
-        grg_ls.db.user = matchedUser;
-        localStorage.setItem('ls', JSON.stringify(grg_ls));
+        //id,email, name ataması yaptık.
+        grg_ls.signed_user = { 
+            id: matchedUser.id,
+            name: matchedUser.name, 
+            email: matchedUser.email
+        };
+        localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
         alert('Giriş Başarılı')
         window.location.href = "index.html"
     } else {
