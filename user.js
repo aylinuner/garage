@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
     getLsData()
     document.getElementById('register_form').addEventListener('submit', (e) => {
         e.preventDefault()
-        if (!isValidEmail()) {
-            return;
-        }
         register()
-
     });
 
+    document.getElementById('login_form').addEventListener('submit', (e) => {
+        e.preventDefault()
+        login()
+    })
 });
 
 //Functions
@@ -62,6 +62,10 @@ function register() {
         password: document.getElementById('password_register').value,
         repassword: document.getElementById('repassword').value
     };
+
+    const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
+    const users = grg_ls.db.user;
+    const alreadyExists = users.some(user => user.email === registerData.email)
     if (!registerData.name || !registerData.surname || !registerData.email || !registerData.password || !registerData.repassword) {
         alert('Tüm alanlar zorunlu!');
         return;
@@ -71,14 +75,15 @@ function register() {
         alert('Şifreler eşleşmiyor')
         return;
     }
-
-    const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
-    const users = grg_ls.db.user;
-
-    const alreadyExists = users.some(user => user.email === registerData.email)
-
+    if (!isValidEmail(registerData.email)) {
+        return;
+    }
     if (alreadyExists) {
         alert('Bu e-posta zaten kayıtlı')
+        return;
+    }
+    if (registerData.password.length < 6) {
+        alert("Şifre 6 karakterden az olamaz!")
         return;
     }
 
@@ -89,15 +94,37 @@ function register() {
         email: registerData.email,
         password: registerData.password
     };
-
+    console.log(newUser.name)
     users.push(newUser);
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
     alert('Kayıt başarılı, giriş yapabilirsiniz!');
     window.location.href = "user.html"
     return;
 }
+function login() {
 
-function isValidEmail() {
+    const loginData = {
+        email: document.getElementById('email_login').value.trim(),
+        password: document.getElementById('password_login').value
+    };
+    const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
+    const users = grg_ls.db.user;
+    const matchedUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
+
+    if (!loginData.email || !loginData.password) {
+        alert('Tüm alanlar zorunlu!!!')
+        return;
+    }
+    if (matchedUser) {
+        grg_ls.db.user = matchedUser;
+        localStorage.setItem('ls', JSON.stringify(grg_ls));
+        alert('Giriş Başarılı')
+        window.location.href = "index.html"
+    } else {
+        alert("Giriş Başarısız")
+    }
+}
+function isValidEmail(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!pattern.test(email)) {
@@ -106,35 +133,7 @@ function isValidEmail() {
     }
     return true;
 }
-
 function generateId(users) {
     return users.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
 }
 
-const loginForm = document.getElementById('login_form')
-
-loginForm?.addEventListener('submit', (e) => {
-
-    e.preventDefault()
-
-    const loginData = {
-        email: document.getElementById('email_login').value.trim(),
-        password: document.getElementById('password_login').value
-    };
-    if (!loginData.email || !loginData.password) {
-        alert('Tüm alanlar zorunlu!!!')
-        return;
-    }
-    const grg_ls = JSON.parse(localStorage.getItem('ls'));
-    const users = grg_ls.db.user;
-    const matchedUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
-
-    if (matchedUser) {
-        grg_ls.user = matchedUser;
-        localStorage.setItem('ls', JSON.stringify(grg_ls));
-        alert('Giriş Başarılı')
-        window.location.href = "index.html"
-    } else {
-        alert("Giriş Başarısız")
-    }
-})
