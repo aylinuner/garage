@@ -29,7 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault()
         login()
     })
-});
+    const logout_btn = document.getElementById("logout_btn")
+    if (logout_btn) {
+        logout_btn.addEventListener('click', (e) => {
+            e.preventDefault()
+            const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
+            grg_ls.signed_user = {};
+            localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
+            alert("Başarıyla çıkış yaptınız.");
+            window.location.href = "/user.html";
+        })
+    }
+})
 //Functions
 function getLsData() {
 
@@ -103,7 +114,7 @@ function register() {
     return;
 }
 function login() {
-
+    debugger
     const loginData = {
         email: document.getElementById('email_login').value.trim(),
         password: document.getElementById('password_login').value
@@ -117,7 +128,7 @@ function login() {
         return;
     }
     if (matchedUser) {
-        //id,email, name ataması yaptık.
+        //id,email,name ataması yaptık.
         grg_ls.signed_user = {
             id: matchedUser.id,
             name: matchedUser.name,
@@ -142,4 +153,8 @@ function isValidEmail(email) {
 function generateId(users) {
     return users.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
 }
+function logout() {
+
+}
+
 
