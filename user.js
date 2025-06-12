@@ -62,9 +62,10 @@ function register() {
         repassword: document.getElementById('repassword').value
     };
 
-    const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
-    const users = grg_ls.signed_user;
-    const alreadyExists = users.some(signed_user => signed_user.email === registerData.email)
+    const users = grg_ls.db.user;
+
+    const alreadyExists = users.some(user => user.email === registerData.email);
+
     if (!registerData.name || !registerData.surname || !registerData.email || !registerData.password || !registerData.repassword) {
         alert('Tüm alanlar zorunlu!');
         return;
@@ -95,6 +96,7 @@ function register() {
     };
     console.log(newUser.name)
     users.push(newUser);
+    grg_ls.db.user = users;
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
     alert('Kayıt başarılı, giriş yapabilirsiniz!');
     window.location.href = "user.html"
