@@ -15,13 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     getLsData()
     document.getElementById('register_form').addEventListener('submit', (e) => {
         e.preventDefault()
-        if(!isValidEmail()){
+        if (!isValidEmail()) {
             return;
         }
         register()
 
     });
-    // const loginForm = document.getElementById('login_form')
 
 });
 
@@ -94,7 +93,7 @@ function register() {
     users.push(newUser);
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
     alert('Kayıt başarılı, giriş yapabilirsiniz!');
-    window.location.href="user.html"
+    window.location.href = "user.html"
     return;
 }
 
@@ -112,28 +111,30 @@ function generateId(users) {
     return users.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
 }
 
-// loginForm?.addEventListener('submit', (e) => {
+const loginForm = document.getElementById('login_form')
 
-//     e.preventDefault()
+loginForm?.addEventListener('submit', (e) => {
 
-//     const loginData = {
-//         email: document.getElementById('email_login').value.trim(),
-//         password: document.getElementById('password_login').value
-//     };
-//     if (!loginData.email || !loginData.password) {
-//         alert('Tüm alanlar zorunlu!!!')
-//         return;
-//     }
-//     const grg_ls = JSON.parse(localStorage.getItem('ls'));
-//     const users = grg_ls.db.user;
-//     const matchedUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
+    e.preventDefault()
 
-//     if (matchedUser) {
-//         grg_ls.user = matchedUser;
-//         localStorage.setItem('ls', JSON.stringify(grg_ls));
-//         alert('Giriş Başarılı')
-//         window.location.href = "index.html"
-//     } else {
-//         alert("Giriş Başarısız")
-//     }
-// })
+    const loginData = {
+        email: document.getElementById('email_login').value.trim(),
+        password: document.getElementById('password_login').value
+    };
+    if (!loginData.email || !loginData.password) {
+        alert('Tüm alanlar zorunlu!!!')
+        return;
+    }
+    const grg_ls = JSON.parse(localStorage.getItem('ls'));
+    const users = grg_ls.db.user;
+    const matchedUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
+
+    if (matchedUser) {
+        grg_ls.user = matchedUser;
+        localStorage.setItem('ls', JSON.stringify(grg_ls));
+        alert('Giriş Başarılı')
+        window.location.href = "index.html"
+    } else {
+        alert("Giriş Başarısız")
+    }
+})
