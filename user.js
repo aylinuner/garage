@@ -12,7 +12,6 @@ let grg_ls_default = {
 //Event Handlers
 const tabButtons = document.querySelectorAll('#tab-buttons button');
 const tabContents = document.querySelectorAll('.tab-content-box');
-
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
         showActiveTabContent(button)
@@ -29,17 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault()
         login()
     })
-    const logout_btn = document.getElementById("logout_btn")
-    if (logout_btn) {
-        logout_btn.addEventListener('click', (e) => {
-            e.preventDefault()
-            const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
-            grg_ls.signed_user = {};
-            localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
-            alert("Başarıyla çıkış yaptınız.");
-            window.location.href = "/user.html";
-        })
-    }
 })
 //Functions
 function getLsData() {
@@ -64,6 +52,7 @@ function showActiveTabContent(button) {
     tabButtons.forEach(btn => btn.classList.remove('active'));
     button.classList.add('active');
 }
+
 function register() {
     const registerData = {
         name: document.getElementById('name').value.trim(),
@@ -114,7 +103,6 @@ function register() {
     return;
 }
 function login() {
-    debugger
     const loginData = {
         email: document.getElementById('email_login').value.trim(),
         password: document.getElementById('password_login').value
@@ -136,7 +124,7 @@ function login() {
         };
         localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
         alert('Giriş Başarılı')
-        window.location.href = "index.html"
+        window.location.href = "/home.html"
     } else {
         alert("Giriş Başarısız")
     }
@@ -152,9 +140,6 @@ function isValidEmail(email) {
 }
 function generateId(users) {
     return users.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
-}
-function logout() {
-
 }
 
 
