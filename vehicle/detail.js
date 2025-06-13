@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     })
 })
 
+
 //Fonksiyon
 function logout() {
     grg_ls.signed_user = {};
@@ -32,7 +33,6 @@ function logout() {
 }
 
 function saveVehicle() {
-    debugger
     vehicle_model = {
         id: generateId(grg_ls.db.vehicle),
         plate: document.getElementById('plate').value.trim(),

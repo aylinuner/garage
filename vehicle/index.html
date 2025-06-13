@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
     <title>Document</title>
 </head>
+
 <body>
     <nav id="sidebar" class="bg-dark text-white position-fixed vh-100 p-5">
         <h3>Menü</h3>
-        <a href="index.html" class="text-white d-block py-2 text-decoration-none">Anasayfa</a>
+        <a href="/home.html" class="text-white d-block py-2 text-decoration-none">Anasayfa</a>
         <a href="customer.html" class="text-white d-block py-2 text-decoration-none">Müşteriler</a>
         <a href="/vehicle/index.html" class="text-white d-block py-2 text-decoration-none">Taşıtlar</a>
         <a href="driver.html" class="text-white d-block py-2 text-decoration-none">Sürücüler</a>
     </nav>
     <main style="margin-left: 250px; padding: 6rem;">
-        <h1>Sayfa İçeriği</h1>
-        <p>Buraya ana içerik gelecek.</p>
+        <table id="vehicleTable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">GARAGE</th>
+                    <th scope="col">İd</th>
+                    <th scope="col">Plaka</th>
+                    <th scope="col">Kilometre</th>
+                    <th scope="col">Marka</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Renk</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+
+                </tr>
+
+            </tbody>
+        </table>
     </main>
     <!-- Sağ üst dropdown -->
     <div id="dropdown_btn" class="dropdown position-fixed top-0 end-0 m-3" style="z-index: 1050;">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle"
-                viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-person-circle" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                 <path fill-rule="evenodd"
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
@@ -41,9 +61,9 @@
                 </button>
             </li>
             <li>
-                <button id="logout_dropdown_btn" class="dropdown-item" type="button"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16"
-                        aria-hidden="true" focusable="false">
+                <button id="logout_dropdown_btn" class="dropdown-item" type="button"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-box-arrow-right" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
                         <path fill-rule="evenodd"
                             d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
                         <path fill-rule="evenodd"
@@ -55,7 +75,8 @@
             <!-- <li><button class="dropdown-item" type="button">Something else here</button></li> -->
         </ul>
     </div>
-    <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
+    <!-- <script src="lib/bootstrap/bootstrap.bundle.min.js"></script> -->
+    <script src="/vehicle/index.js"></script>
 </body>
+
 </html>
