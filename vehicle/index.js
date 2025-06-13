@@ -4,13 +4,12 @@ if (!grg_ls.signed_user.id) {
     window.location.href = "/user.html"
 }
 //Event
-document.getElementById('DOMContentLoaded', (e) => {
-    e.preventDefault()
-    showTable()
-})
+//MOUNTED:YÜKLENDİĞİNDE İLK BURASI ÇALIŞIR.
+showTable()
 document.getElementById("logout_dropdown_btn").addEventListener('click', (e) => {
     e.preventDefault()
     logout()
+//BU KISIM ÇALIŞMIYOR.  
 })
 
 
@@ -19,7 +18,7 @@ function logout() {
     grg_ls.signed_user = {};
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls))
     alert('Başarıyla çıkış yaptınız')
-    window.location.href = "user.html";
+    window.location.href = "/user.html";
 }
 function showTable() {
     const table_body = document.querySelector("#vehicleTable tbody");
@@ -27,7 +26,7 @@ function showTable() {
     grg_ls.db.vehicle.forEach(vehicle => {
         const row = document.createElement('tr')
         row.innerHTML = `
-<td>${vehicle_model.id}</td>
+ <td>${vehicle.id}</td>
 <td>${vehicle.plate}</td>
 <td>${vehicle.km}</td>
 <td>${vehicle.brand}</td>

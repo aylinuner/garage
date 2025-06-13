@@ -18,7 +18,6 @@ document.getElementById("logout_dropdown_btn").addEventListener('click', (e) => 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault()
     document.getElementById('vehicle_form').addEventListener('submit', () => {
-        debugger
         saveVehicle()
     })
 })
