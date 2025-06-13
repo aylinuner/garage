@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
-
-    <title>Ana Sayfa</title>
+    <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
+    <title>Taşıtlar</title>
 </head>
-
 <body>
-    <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark text-white position-fixed vh-100 p-5">
         <h3>Menü</h3>
         <a href="index.html" class="text-white d-block py-2 text-decoration-none">Anasayfa</a>
@@ -18,11 +15,44 @@
         <a href="/vehicle/index.html" class="text-white d-block py-2 text-decoration-none">Taşıtlar</a>
         <a href="driver.html" class="text-white d-block py-2 text-decoration-none">Sürücüler</a>
     </nav>
-    <main style="margin-left: 250px; padding: 2rem;">
-        <h1>Sayfa İçeriği</h1>
-        <p>Buraya ana içerik gelecek.</p>
-    </main>
-    <!-- Sağ üst dropdown -->
+    <form id="vehicle_form" style="margin-left: 250px; margin-right: 100px; padding: 6rem;">
+        <div class="mb-3 row">
+            <label for="plate" class="col-sm-2 col-form-label">Plaka :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="plate">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="km" class="col-sm-2 col-form-label">Kilometre :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="km">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="brand" class="col-sm-2 col-form-label">Marka :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="brand">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="model" class="col-sm-2 col-form-label">Model :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="model">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="color" class="col-sm-2 col-form-label">Renk :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="color">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-sm-10 offset-sm-4 ">
+                <button type="button" class="btn btn-secondary">Geri</button>
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </form>
     <div id="dropdown_btn" class="dropdown position-fixed top-0 end-0 m-3" style="z-index: 1050;">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -31,7 +61,6 @@
                 <path fill-rule="evenodd"
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
             </svg>
-            
         </button>
         <ul class="dropdown-menu">
             <li>
@@ -60,9 +89,8 @@
             <!-- <li><button class="dropdown-item" type="button">Something else here</button></li> -->
         </ul>
     </div>
-    <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="home.js"></script>
-
+<script src="/lib/bootstrap/bootstrap.bundle.min.js"> </script>
+<script src="/vehicle/detail.js"></script>
 </body>
 
 </html>

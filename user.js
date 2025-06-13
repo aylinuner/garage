@@ -8,7 +8,6 @@ let grg_ls_default = {
     },
     signed_user: {}
 };
-
 //Event Handlers
 const tabButtons = document.querySelectorAll('#tab-buttons button');
 const tabContents = document.querySelectorAll('.tab-content-box');
@@ -64,22 +63,21 @@ function register() {
 
     const users = grg_ls.db.user;
 
-    const alreadyExists = users.some(user => user.email === registerData.email);
+    const alreadyExists = users.some(x => x.email === registerData.email);
 
+    if (alreadyExists) {
+        alert('Bu e-posta zaten kayıtlı')
+        return;
+    }
     if (!registerData.name || !registerData.surname || !registerData.email || !registerData.password || !registerData.repassword) {
         alert('Tüm alanlar zorunlu!');
         return;
     }
-
     if (registerData.password !== registerData.repassword) {
         alert('Şifreler eşleşmiyor')
         return;
     }
     if (!isValidEmail(registerData.email)) {
-        return;
-    }
-    if (alreadyExists) {
-        alert('Bu e-posta zaten kayıtlı')
         return;
     }
     if (registerData.password.length < 6) {
@@ -94,7 +92,6 @@ function register() {
         email: registerData.email,
         password: registerData.password
     };
-    console.log(newUser.name)
     users.push(newUser);
     grg_ls.db.user = users;
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
@@ -109,7 +106,7 @@ function login() {
     };
     const grg_ls = JSON.parse(localStorage.getItem('grg_ls'));
     const users = grg_ls.db.user;
-    const matchedUser = users.find(user => user.email === loginData.email && user.password === loginData.password);
+    const matchedUser = users.find(x => x.email === loginData.email && x.password === loginData.password);
 
     if (!loginData.email || !loginData.password) {
         alert('Tüm alanlar zorunlu!!!')
