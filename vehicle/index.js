@@ -6,10 +6,11 @@ if (!grg_ls.signed_user.id) {
 //Event
 //MOUNTED:YÜKLENDİĞİNDE İLK BURASI ÇALIŞIR.
 showTable()
+
 document.getElementById("logout_dropdown_btn").addEventListener('click', (e) => {
     e.preventDefault()
     logout()
-//BU KISIM ÇALIŞMIYOR.  
+    //BU KISIM ÇALIŞMIYOR.  
 })
 
 
@@ -23,17 +24,20 @@ function logout() {
 function showTable() {
     const table_body = document.querySelector("#vehicleTable tbody");
     table_body.innerHTML = '';
-    grg_ls.db.vehicle.forEach(vehicle => {
+    grg_ls.db.vehicle.forEach(x => {
         const row = document.createElement('tr')
         row.innerHTML = `
- <td>${vehicle.id}</td>
-<td>${vehicle.plate}</td>
-<td>${vehicle.km}</td>
-<td>${vehicle.brand}</td>
-<td>${vehicle.model}</td>
-<td>${vehicle.color}</td>
+ <td>${x.id}</td>
+<td>${x.plate}</td>
+<td>${x.km}</td>
+<td>${x.brand}</td>
+<td>${x.model}</td>
+<td>${x.color}</td>
 `;
+        //satıra çift tıklandığına detail.html sayfasına id'sine göre gidiyor.
+        row.addEventListener('dblclick', () => {
+            window.location.href = `detail.html?id=${x.id}`;
+        });
         table_body.appendChild(row);
     })
-
 }

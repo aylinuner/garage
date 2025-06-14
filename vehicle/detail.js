@@ -20,6 +20,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     document.getElementById('vehicle_form').addEventListener('submit', () => {
         saveVehicle()
     })
+    document.getElementById('back_btn').addEventListener('click', () => {
+        window.location.href = "index.html"
+    })
+
+  
+    
 })
 
 
@@ -40,6 +46,15 @@ function saveVehicle() {
         model: document.getElementById('model').value.trim(),
         color: document.getElementById('color').value.trim()
     };
+    const exist_plate = grg_ls.db.vehicle.some(x => x.plate === vehicle_model.plate)
+    if (exist_plate) {
+        alert('Bu plaka kayıtlı!')
+        return;
+    }
+    if (!vehicle_model.id || !vehicle_model.plate || !vehicle_model.km || !vehicle_model.brand || !vehicle_model.model || !vehicle_model.color) {
+        alert("Tüm alanlar zorunlu !!!")
+        return;
+    }
     grg_ls.db.vehicle.push(vehicle_model)
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
     alert('Kayıt Başarılı')
