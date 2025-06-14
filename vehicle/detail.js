@@ -23,9 +23,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     document.getElementById('back_btn').addEventListener('click', () => {
         window.location.href = "index.html"
     })
+    document.getElementById('update_btn').classList.add('d-none', () => {
+    })
 
-  
-    
+
+
+
 })
 
 
@@ -63,4 +66,7 @@ function saveVehicle() {
 
 function generateId(p) {
     return p.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
+}
+function updateBtn() {
+
 }
