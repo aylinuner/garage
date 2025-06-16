@@ -12,25 +12,11 @@ document.getElementById("logout_dropdown_btn").addEventListener('click', (e) => 
     logout()
 })
 document.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = parseInt(urlParams.get("id"));
-    debugger
-    if (id && vehicle_model.id !== 0) {
-        // Güncelle butonunu göster, BU KISMA BAKILACAK.
-        document.getElementById('update_btn').classList.remove('d-none');
-    }
-
-    let grg_ls = JSON.parse(localStorage.getItem("grg_ls")) || { db: { vehicle: [] } };
-    const item = grg_ls.db.vehicle.find(v => v.id === id);
-    if (item) {
-        document.getElementById("plate").value = item.plate;
-        document.getElementById("km").value = item.km;
-        document.getElementById("brand").value = item.brand;
-        document.getElementById("model").value = item.model;
-        document.getElementById("color").value = item.color;
-    }
+ 
+    document.getElementById("new_btn").addEventListener('click',()=>{
+        window.location.href="detail.html"
+    })
 });
-
 
 //Fonksiyon
 function logout() {
