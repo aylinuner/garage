@@ -58,7 +58,7 @@ function saveVehicle() {
     grg_ls.db.vehicle.push(vehicle_model)
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls));
     alert('Kayıt Başarılı')
-    window.location.href = "/vehicle/index.html"
+    window.location.href = "index.html"
 }
 function generateId(p) {
     return p.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
