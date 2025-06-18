@@ -12,10 +12,14 @@ document.getElementById("logout_dropdown_btn").addEventListener('click', (e) => 
     logout()
 })
 document.addEventListener("DOMContentLoaded", () => {
- 
     document.getElementById("new_btn").addEventListener('click',()=>{
         window.location.href="detail.html"
     })
+    const grg_ls = JSON.parse(localStorage.getItem("grg_ls"));
+    // Kullanıcı adı varsa HTML içine yerleştir
+    if (grg_ls.signed_user.name) {
+        document.getElementById("logged_user_name").textContent = grg_ls.signed_user.name;
+    }
 });
 
 //Fonksiyon
@@ -44,6 +48,5 @@ function showTable() {
         });
         table_body.appendChild(row);
     })
-
 }
 

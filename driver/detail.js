@@ -31,8 +31,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     if (grg_ls.signed_user.name) {
         document.getElementById("logged_user_name").textContent = grg_ls.signed_user.name;
     }
+    updateDriver()
+
 });
 
+
+//fonksiyonlar
 function logout() {
     grg_ls.signed_user = {}
     localStorage.setItem("grg_ls", JSON.stringify(grg_ls))
@@ -69,4 +73,49 @@ function saveDriver() {
 }
 function generateId(p) {
     return p.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
+}
+function updateDriver(){
+    const id = getQueryParam("id");
+    const grg_ls = JSON.parse(localStorage.getItem("grg_ls"));
+    if (id) {
+        document.getElementById("update_btn").classList.remove("d-none");
+
+        const numericId = parseInt(id);
+        const driver = grg_ls.db.driver.find(v => v.id === numericId);
+        // Sayfa yüklendiğinde inputlara verileri yerleştir
+        document.getElementById("name").value = driver.name;
+        document.getElementById("surname").value = driver.surname;
+        document.getElementById("tc").value = driver.tc;
+        document.getElementById("address").value = driver.address;
+        document.getElementById("city").value = driver.city;
+        document.getElementById("state").value = driver.state;
+        document.getElementById("zip").value = driver.zip;
+        // document.getElementById("driver_file").value = driver.driver_file;
+
+        const updateBtn = document.getElementById("update_btn");
+        updateBtn.classList.remove("d-none");
+        updateBtn.onclick = () => {
+            // Güncelle butonuna basıldığında yeni değerleri kaydet
+            document.getElementById("update_btn").addEventListener("click", () => {
+                driver.name = document.getElementById("name").value;
+                driver.surname = document.getElementById("surname").value;
+                driver.tc = document.getElementById("tc").value;
+                driver.address = document.getElementById("address").value;
+                driver.city = document.getElementById("city").value;
+                driver.state = document.getElementById("state").value;
+                driver.zip = document.getElementById("zip").value;
+                driver.driver_file = document.getElementById("driver_file").value;
+
+                localStorage.setItem("grg_ls", JSON.stringify(grg_ls));
+                alert("Sürücü bilgisi başarıyla güncellendi!");
+                window.location.href = "index.html";
+                return;
+            });
+        }
+    }
+}
+
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }

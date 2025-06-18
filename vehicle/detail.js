@@ -17,12 +17,17 @@ document.getElementById("logout_dropdown_btn").addEventListener('click', (e) => 
 })
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault()
-    document.getElementById('vehicle_form').addEventListener('submit', () => {
+    document.getElementById('save_btn').addEventListener('click', () => {
         saveVehicle()
     })
     document.getElementById('back_btn').addEventListener('click', () => {
         window.location.href = "index.html"
     })
+    const grg_ls = JSON.parse(localStorage.getItem("grg_ls"));
+    // Kullanıcı adı varsa HTML içine yerleştir
+    if (grg_ls.signed_user.name) {
+        document.getElementById("logged_user_name").textContent = grg_ls.signed_user.name;
+    }
     updateVehicle()
     deleteVehicle()
 });
