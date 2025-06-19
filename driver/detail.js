@@ -41,7 +41,7 @@ function logout() {
     grg_ls.signed_user = {}
     localStorage.setItem("grg_ls", JSON.stringify(grg_ls))
     alert("Başarıyla çıkış yaptınız")
-    window.alert = "/user.html"
+    window.location.href = "/user.html"
 }
 
 function saveDriver() {
