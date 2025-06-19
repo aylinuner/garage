@@ -20,10 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-
-
 function logout(){
-   
+    
+    grg_ls.signed_user = {}
+    localStorage.setItem("grg_ls", JSON.stringify(grg_ls))
+    alert("Başarıyla çıkış yaptınız")
+    window.location.href = "/user.html"
 }
 
 function showTable() {

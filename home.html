@@ -6,17 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
 
-    <title>Ana Sayfa</title>
+    <title>GRG</title>
 </head>
 
 <body>
     <!-- Sidebar -->
     <nav id="sidebar" class="bg-dark text-white position-fixed vh-100 p-5">
         <h3>Menü</h3>
-        <a href="index.html" class="text-white d-block py-2 text-decoration-none">Anasayfa</a>
-        <a href="customer.html" class="text-white d-block py-2 text-decoration-none">Müşteriler</a>
+        <a href="home.html" class="text-white d-block py-2 text-decoration-none">Anasayfa</a>
         <a href="/vehicle/index.html" class="text-white d-block py-2 text-decoration-none">Taşıtlar</a>
-        <a href="driver.html" class="text-white d-block py-2 text-decoration-none">Sürücüler</a>
+        <a href="/driver/index.html" class="text-white d-block py-2 text-decoration-none">Sürücüler</a>
     </nav>
     <main style="margin-left: 250px; padding: 2rem;">
         <h1>Sayfa İçeriği</h1>
@@ -31,10 +30,10 @@
                 <path fill-rule="evenodd"
                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
             </svg>
-            
+            <span id="logged_user_name"></span>
         </button>
         <ul class="dropdown-menu">
-            <li>
+            <!-- <li>
                 <button id="user_dropdown_btn" class="dropdown-item" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-person-circle" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
@@ -44,7 +43,7 @@
                     </svg>
                     Kullanıcı
                 </button>
-            </li>
+            </li> -->
             <li>
                 <button id="logout_dropdown_btn" class="dropdown-item" type="button"><svg
                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"

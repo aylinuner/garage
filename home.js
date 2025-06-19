@@ -9,7 +9,10 @@ document.getElementById("logout_dropdown_btn").addEventListener('click', (e) => 
     e.preventDefault()
     logout()
 })
-
+// Kullanıcı adı varsa HTML içine yerleştir
+if (grg_ls.signed_user.name) {
+    document.getElementById("logged_user_name").textContent = grg_ls.signed_user.name;
+}
 
 //Fonksiyon
 function logout() {
