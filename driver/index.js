@@ -37,6 +37,7 @@ function showTable() {
 <td>${x.id}</td>
 <td>${x.tc}</td>
 <td>${x.name}</td>
+
 <td>${x.surname}</td>
 <td>${x.address}</td>
 <td>${x.city}</td>

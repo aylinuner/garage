@@ -1,5 +1,6 @@
 const grg_ls = JSON.parse(localStorage.getItem('grg_ls'))
 var driver_model = {
+    img: null,
     id: null,
     name: null,
     surname: null,
@@ -47,6 +48,7 @@ function logout() {
 function saveDriver() {
     driver_model = {
         id: generateId(grg_ls.db.driver),
+        // img:document.getElementById('img').value.trim(),
         name: document.getElementById('name').value.trim(),
         surname: document.getElementById('surname').value.trim(),
         tc: document.getElementById('tc').value.trim(),
@@ -83,6 +85,7 @@ function updateDriver() {
         const numericId = parseInt(id);
         const driver = grg_ls.db.driver.find(v => v.id === numericId);
         // Sayfa yüklendiğinde inputlara verileri yerleştir
+        // document.getElementById("img").value=driver.img;
         document.getElementById("name").value = driver.name;
         document.getElementById("surname").value = driver.surname;
         document.getElementById("tc").value = driver.tc;
@@ -95,6 +98,7 @@ function updateDriver() {
         const updateBtn = document.getElementById("update_btn");
         updateBtn.classList.remove("d-none");
         updateBtn.onclick = () => {
+            // driver.img=document.getElementById("img").value;
             driver.name = document.getElementById("name").value;
             driver.surname = document.getElementById("surname").value;
             driver.tc = document.getElementById("tc").value;
@@ -102,7 +106,7 @@ function updateDriver() {
             driver.city = document.getElementById("city").value;
             driver.state = document.getElementById("state").value;
             driver.zip = document.getElementById("zip").value;
-            driver.driver_file = document.getElementById("driver_file").value;
+            // driver.driver_file = document.getElementById("driver_file").value;
 
             localStorage.setItem("grg_ls", JSON.stringify(grg_ls));
             alert("Sürücü bilgisi başarıyla güncellendi!");
@@ -118,6 +122,7 @@ function deleteDriver() {
     const driverIndex = grg_ls.db.driver.findIndex(d => d.id === numericId);
 
     const driver = grg_ls.db.driver[driverIndex];
+    // document.getElementById("img").value=driver.img;
     document.getElementById("name").value = driver.name;
     document.getElementById("surname").value = driver.surname;
     document.getElementById("tc").value = driver.tc;
@@ -133,7 +138,7 @@ function deleteDriver() {
     deleteBtn.onclick = () => {
         grg_ls.db.driver.splice(driverIndex, 1);
         localStorage.setItem("grg_ls", JSON.stringify(grg_ls));
-        alert("Araç başarıyla silindi.");
+        alert("Sürücü başarıyla silindi.");
         window.location.href = "index.html";
     }
 }
