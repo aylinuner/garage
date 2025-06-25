@@ -82,7 +82,6 @@ function generateId(p) {
     return p.reduce((max, u) => Math.max(max, u.id || 0), 0) + 1;
 }
 function setDriver() {
-
     const id = getQueryParam("id");
     const grg_ls = JSON.parse(localStorage.getItem("grg_ls"));
     if (id) {
@@ -100,15 +99,13 @@ function setDriver() {
         document.getElementById("state").value = driver.state;
         document.getElementById("zip").value = driver.zip;
         // document.getElementById("driver_img").value = driver.img
-        if(driver.img_byte_array && driver.img_byte_array.length >0){
-            const byteArray=new Uint8Array(driver.img_byte_array);
-            const blob=new Blob([byteArray], {type: "image/jpeg/webp"})
-            const imageUrl=URL.createObjectURL(blob);
-            document.getElementById("driver_img").src=imageUrl;
+        if (driver.img_byte_array && driver.img_byte_array.length > 0) {
+            const byteArray = new Uint8Array(driver.img_byte_array);
+            const blob = new Blob([byteArray], { type: "image/jpeg/webp" })
+            const imageUrl = URL.createObjectURL(blob);
+            document.getElementById("driver_img").src = imageUrl;
         }
-
         // document.getElementById("driver_file").value = driver.driver_file;
-
         const updateBtn = document.getElementById("update_btn");
         updateBtn.classList.remove("d-none");
         updateBtn.onclick = async () => {
@@ -137,8 +134,8 @@ function deleteDriver() {
     const grg_ls = JSON.parse(localStorage.getItem("grg_ls"));
     const numericId = parseInt(id);
     const driverIndex = grg_ls.db.driver.findIndex(d => d.id === numericId);
-
     const driver = grg_ls.db.driver[driverIndex];
+
     document.getElementById("img").value = driver.img;
     // dpocument.getElementById("img_byte_array").value=driver.img_byte_array;
     document.getElementById("name").value = driver.name;
@@ -150,7 +147,6 @@ function deleteDriver() {
     document.getElementById("zip").value = driver.zip;
     //aşağıdaki satıra bakılacak(file type için farklı işlem gerekli).
     // document.getElementById("driver_file").value = driver.driver_file;
-
     const deleteBtn = document.getElementById("delete_btn");
     deleteBtn.classList.remove("d-none");
     deleteBtn.onclick = () => {
@@ -167,7 +163,6 @@ function getQueryParam(param) {
 function readFileAsBytes() {
     debugger
     return new Promise((resolve, reject) => {
-
         const input = document.getElementById('img')
         const file = input.files[0];
         if (!file) {
@@ -175,7 +170,6 @@ function readFileAsBytes() {
             return;
         }
         const reader = new FileReader();
-
         reader.onload = function (event) {
             const arrayBuffer = event.target.result;
             const bytes = new Uint8Array(arrayBuffer);
@@ -193,7 +187,6 @@ function imgByteArrayToImgFile(driver_model) {
         console.warn("img_byte_array boş");
         return null;
     }
-
     const byteArray = new Uint8Array(driver_model.img_byte_array);
 
     const blob = new Blob([byteArray], { type: 'image/jpeg/webp' });

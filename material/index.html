@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
-    <title>Araçlar / Anasayfa</title>
+    <title>Malzemeler / Anasayfa</title>
 </head>
 
 <body>
@@ -18,25 +18,24 @@
     </nav>
     <main style="margin-left: 150px; padding: 6rem;">
         <div class="mb-3 row">
-            <h3>Taşıtlar</h3>
+            <div class="d-flex align-items-center justify-content-start w-100 mb-2">
+                <h3 class="me-3 mb-0">Malzemeler</h3>
+                <input id="search" class="form-control" style="width: 200px;" type="search" placeholder="Ara">
+            </div>
+            <ul id="materialList"></ul>
         </div>
-        <table id="vehicleTable" class="table table-hover">
-
+        <table id="materialTable" class="table table-hover">
             <thead>
                 <tr>
-                    <!-- <th scope="col">GARAGE</th> -->
-                    <th scope="col">İd</th>
-                    <th scope="col">Plaka</th>
-                    <th scope="col">Kilometre</th>
-                    <th scope="col">Marka</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Renk</th>
+                    <th scope="col">id</th>
+                    <th scope="col">İsim</th>
                 </tr>
             </thead>
             <tbody>
-                <!--Buranın kodları javascript tarafında döngü şeklinde yazıldı.-->
+                <!-- Buranın kodları javascript tarafında döngü şeklinde yazıldı. -->
             </tbody>
         </table>
+
     </main>
     <!-- Sağ üst dropdown -->
     <!-- Sağ üst dropdown -->
@@ -80,8 +79,6 @@
             </ul>
         </div>
     </div>
-
-
     <script src="/lib/bootstrap/bootstrap.bundle.min.js"> </script>
     <script src="index.js"></script>
 </body>
