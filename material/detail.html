@@ -20,45 +20,44 @@
         <div class="mb-3 row">
             <h3>Malzemeler</h3>
         </div>
+        <input type="hidden" id="id">
+
         <div class="mb-3 row">
             <label for="name" class="col-sm-2 col-form-label">İsim :</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="name">
             </div>
         </div>
+        <div class="mb-3 row">
+            <label for="propertySearch" class="col-sm-2 col-form-label">Özellik :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="propertySearch">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="descriptionSearch" class="col-sm-2 col-form-label">Açıklama :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="descriptionSearch">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="qrCode" class="col-sm-2 col-form-label">Barkod Numarası :</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="qrCode">
+            </div>
+        </div>
         <!-- <div class="mb-3 row">
-            <label for="km" class="col-sm-2 col-form-label">Kilometre :</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="km">
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="brand" class="col-sm-2 col-form-label">Marka :</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="brand">
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <label for="model" class="col-sm-2 col-form-label">Model :</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="model">
-            </div>
-        </div>
-        <div class="mb-3 row">
             <label for="color" class="col-sm-2 col-form-label">Renk :</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="color">
             </div>
         </div> -->
-
     </form>
     <div id="dropdown_btn" class="position-fixed top-0 end-0 m-3" style="z-index: 1050;">
         <div class="d-flex align-items-center gap-2">
             <button type="button" id="back_btn" class="btn btn-secondary">Geri</button>
             <button type="submit" id="delete_btn" class="btn btn-danger d-none">Sil</button>
-            <button type="submit" id="update_btn" class="btn btn-dark d-none">Güncelle</button>
-            <button type="submit" id="save_btn" class="btn btn-primary">Kaydet</button>
-
+            <button type="submit" id="action_btn" class="btn btn-primary">Kaydet</button>
             <!-- Dropdown Menü -->
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"

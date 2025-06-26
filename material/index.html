@@ -20,15 +20,39 @@
         <div class="mb-3 row">
             <div class="d-flex align-items-center justify-content-start w-100 mb-2">
                 <h3 class="me-3 mb-0">Malzemeler</h3>
-                <input id="search" class="form-control" style="width: 200px;" type="search" placeholder="Ara">
+                <!-- <input id="search" class="form-control" style="width: 200px;" type="search" placeholder="Ara"> -->
             </div>
             <ul id="materialList"></ul>
         </div>
         <table id="materialTable" class="table table-hover">
             <thead>
                 <tr>
+                    <th>
+                        <input id="idSearch" class="form-control" style="width: 150px;" type="search" placeholder="Ara">
+                    </th>
+                    <th>
+                        <input id="nameSearch" class="form-control" style="width: 150px;" type="search"
+                            placeholder="Ara">
+                    </th>
+                    <th>
+                        <input id="propertySearch" class="form-control" style="width: 150px;" type="search"
+                            placeholder="Ara">
+                    </th>
+                    <th>
+                        <input id="descriptionSearch" class="form-control" style="width: 150px;" type="search"
+                            placeholder="Ara">
+                    </th>
+                    <th>
+                        <input id="qrCode" class="form-control" style="width: 150px;" type="search" placeholder="Ara">
+                    </th>
+                </tr>
+                <tr>
                     <th scope="col">id</th>
                     <th scope="col">İsim</th>
+                    <th scope="col">Özellik</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col">Barkod numarası</th>
+
                 </tr>
             </thead>
             <tbody>

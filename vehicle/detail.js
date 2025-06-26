@@ -1,3 +1,4 @@
+//chrome localstorage grg_ls adlı veriyi javascript'te aktardım.
 const grg_ls = JSON.parse(localStorage.getItem('grg_ls'))
 var vehicle_model = {
     id: null,
@@ -23,11 +24,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     document.getElementById('back_btn').addEventListener('click', () => {
         window.location.href = "index.html"
     })
-    const grg_ls = JSON.parse(localStorage.getItem("grg_ls"));
-    // Kullanıcı adı varsa HTML içine yerleştir
-    if (grg_ls.signed_user.name) {
-        document.getElementById("logged_user_name").textContent = grg_ls.signed_user.name;
-    }
+    userName();
     updateVehicle()
     deleteVehicle()
 });
@@ -40,6 +37,13 @@ function logout() {
     localStorage.setItem('grg_ls', JSON.stringify(grg_ls))
     alert('Başarıyla çıkış yaptınız')
     window.location.href = "/user.html";
+}
+function userName(){
+    const grg_ls = JSON.parse(localStorage.getItem("grg_ls"));
+    // Kullanıcı adı varsa HTML içine yerleştir
+    if (grg_ls.signed_user.name) {
+        document.getElementById("logged_user_name").textContent = grg_ls.signed_user.name;
+    }
 }
 function saveVehicle() {
     vehicle_model = {
